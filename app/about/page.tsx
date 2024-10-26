@@ -60,7 +60,7 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Team Member 1 */}
           <div className="bg-white p-6 shadow-lg rounded-lg text-center">
-            <img src="/images/team/john-doe.jpg" alt="John Doe" className="w-32 h-32 mx-auto rounded-full mb-4" />
+            <img src="/profile.png" alt="John Mnyika" className="w-32 h-32 mx-auto rounded-full mb-4" />
             <h4 className="text-xl font-bold mb-2">John Doe</h4>
             <p className="text-blue-600 font-semibold">CEO & Founder</p>
             <p className="text-sm text-gray-600 mt-4">
@@ -71,22 +71,22 @@ export default function About() {
 
           {/* Team Member 2 */}
           <div className="bg-white p-6 shadow-lg rounded-lg text-center">
-            <img src="/images/team/jane-smith.jpg" alt="Jane Smith" className="w-32 h-32 mx-auto rounded-full mb-4" />
+            <img src="/profile.png" alt="John Mnyika" className="w-32 h-32 mx-auto rounded-full mb-4" />
             <h4 className="text-xl font-bold mb-2">Jane Smith</h4>
             <p className="text-blue-600 font-semibold">Head of Development</p>
             <p className="text-sm text-gray-600 mt-4">
-              Jane is an experienced software engineer, leading our development team with a focus on innovation, 
+              John is an experienced software engineer, leading our development team with a focus on innovation, 
               quality, and collaboration.
             </p>
           </div>
 
           {/* Team Member 3 */}
           <div className="bg-white p-6 shadow-lg rounded-lg text-center">
-            <img src="/images/team/mark-jones.jpg" alt="Mark Jones" className="w-32 h-32 mx-auto rounded-full mb-4" />
+            <img src="/profile.png" alt="John Mnyika" className="w-32 h-32 mx-auto rounded-full mb-4" />
             <h4 className="text-xl font-bold mb-2">Mark Jones</h4>
             <p className="text-blue-600 font-semibold">Head of Technical Support</p>
             <p className="text-sm text-gray-600 mt-4">
-              Mark ensures our clients receive top-notch support and maintenance, keeping systems efficient and secure.
+              John ensures our clients receive top-notch support and maintenance, keeping systems efficient and secure.
             </p>
           </div>
         </div>
