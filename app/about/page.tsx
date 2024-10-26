@@ -23,7 +23,7 @@ export default function About() {
           <h3 className="text-2xl font-semibold mb-4 text-blue-600">Our Mission</h3>
           <p className="text-lg text-gray-700">
             To empower businesses with cutting-edge technology, driving growth, efficiency, and resilience in 
-            today’s competitive landscape.
+            today&apos;s competitive landscape.
           </p>
         </div>
 
@@ -41,7 +41,7 @@ export default function About() {
           <h3 className="text-2xl font-semibold mb-4 text-blue-600">Our Core Values</h3>
           <ul className="list-disc list-inside text-left text-lg text-gray-700 space-y-2">
             <li><strong>Innovation:</strong> Pioneering new ideas and solutions to stay ahead in tech.</li>
-            <li><strong>Customer Focus:</strong> Delivering tailored solutions that meet our clients' unique needs.</li>
+            <li><strong>Customer Focus:</strong> Delivering tailored solutions that meet our clients&apos; unique needs.</li>
             <li><strong>Integrity:</strong> Building trust through honesty and transparency in all we do.</li>
             <li><strong>Quality Excellence:</strong> Striving for excellence in every project, big or small.</li>
             <li><strong>Collaboration:</strong> Working together to achieve common goals.</li>
@@ -60,33 +60,33 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Team Member 1 */}
           <div className="bg-white p-6 shadow-lg rounded-lg text-center">
-          <img src="profile.png" alt="John Mnyika" className="w-32 h-32 mx-auto rounded-full mb-4" />
-            <h4 className="text-xl font-bold mb-2">John Mnyika</h4>
+            <img src="/images/team/john-doe.jpg" alt="John Doe" className="w-32 h-32 mx-auto rounded-full mb-4" />
+            <h4 className="text-xl font-bold mb-2">John Doe</h4>
             <p className="text-blue-600 font-semibold">CEO & Founder</p>
             <p className="text-sm text-gray-600 mt-4">
-              John brings over 5 years of experience in tech leadership, guiding Spike Tech Empire to new heights 
+              John brings over 15 years of experience in tech leadership, guiding Spike Tech Empire to new heights 
               with his strategic vision and passion for innovation.
             </p>
           </div>
 
           {/* Team Member 2 */}
           <div className="bg-white p-6 shadow-lg rounded-lg text-center">
-          <img src="profile.png" alt="John Mnyika" className="w-32 h-32 mx-auto rounded-full mb-4" />
-          <h4 className="text-xl font-bold mb-2">John Mnyika</h4>
+            <img src="/images/team/jane-smith.jpg" alt="Jane Smith" className="w-32 h-32 mx-auto rounded-full mb-4" />
+            <h4 className="text-xl font-bold mb-2">Jane Smith</h4>
             <p className="text-blue-600 font-semibold">Head of Development</p>
             <p className="text-sm text-gray-600 mt-4">
-              John is an experienced software engineer, leading our development team with a focus on innovation, 
+              Jane is an experienced software engineer, leading our development team with a focus on innovation, 
               quality, and collaboration.
             </p>
           </div>
 
           {/* Team Member 3 */}
           <div className="bg-white p-6 shadow-lg rounded-lg text-center">
-          <img src="profile.png" alt="John Mnyika" className="w-32 h-32 mx-auto rounded-full mb-4" />
-          <h4 className="text-xl font-bold mb-2">John Mnyika</h4>
+            <img src="/images/team/mark-jones.jpg" alt="Mark Jones" className="w-32 h-32 mx-auto rounded-full mb-4" />
+            <h4 className="text-xl font-bold mb-2">Mark Jones</h4>
             <p className="text-blue-600 font-semibold">Head of Technical Support</p>
             <p className="text-sm text-gray-600 mt-4">
-              John ensures our clients receive top-notch support and maintenance, keeping systems efficient and secure.
+              Mark ensures our clients receive top-notch support and maintenance, keeping systems efficient and secure.
             </p>
           </div>
         </div>
