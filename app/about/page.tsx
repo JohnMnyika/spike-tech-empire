@@ -61,7 +61,7 @@ export default function About() {
           {/* Team Member 1 */}
           <div className="bg-white p-6 shadow-lg rounded-lg text-center">
             <img src="/profile.png" alt="John Mnyika" className="w-32 h-32 mx-auto rounded-full mb-4" />
-            <h4 className="text-xl font-bold mb-2">John Doe</h4>
+            <h4 className="text-xl font-bold mb-2">John Mnyika</h4>
             <p className="text-blue-600 font-semibold">CEO & Founder</p>
             <p className="text-sm text-gray-600 mt-4">
               John brings over 15 years of experience in tech leadership, guiding Spike Tech Empire to new heights 
@@ -72,7 +72,7 @@ export default function About() {
           {/* Team Member 2 */}
           <div className="bg-white p-6 shadow-lg rounded-lg text-center">
             <img src="/profile.png" alt="John Mnyika" className="w-32 h-32 mx-auto rounded-full mb-4" />
-            <h4 className="text-xl font-bold mb-2">Jane Smith</h4>
+            <h4 className="text-xl font-bold mb-2">John Mnyika</h4>
             <p className="text-blue-600 font-semibold">Head of Development</p>
             <p className="text-sm text-gray-600 mt-4">
               John is an experienced software engineer, leading our development team with a focus on innovation, 
@@ -83,7 +83,7 @@ export default function About() {
           {/* Team Member 3 */}
           <div className="bg-white p-6 shadow-lg rounded-lg text-center">
             <img src="/profile.png" alt="John Mnyika" className="w-32 h-32 mx-auto rounded-full mb-4" />
-            <h4 className="text-xl font-bold mb-2">Mark Jones</h4>
+            <h4 className="text-xl font-bold mb-2">John Mnyika</h4>
             <p className="text-blue-600 font-semibold">Head of Technical Support</p>
             <p className="text-sm text-gray-600 mt-4">
               John ensures our clients receive top-notch support and maintenance, keeping systems efficient and secure.
