@@ -1,5 +1,6 @@
 // app/contact/page.tsx
-'use client'; // Add this to mark the component as a Client Component
+
+'use client';
 
 import { useState } from 'react';
 
@@ -10,16 +11,32 @@ export default function Contact() {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Add form validation and submission logic here
-    console.log('Form data:', formData);
-    setSubmitted(true);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setStatusMessage('Your message has been successfully sent. We will get back to you soon.');
+      } else {
+        setStatusMessage('Oops! Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setStatusMessage('Error submitting form. Please try again later.');
+    }
   };
 
   return (
@@ -33,9 +50,7 @@ export default function Contact() {
               <h2 className="text-2xl font-semibold mb-6">Get in Touch</h2>
               <form onSubmit={handleSubmit}>
                 <div className="mb-4">
-                  <label htmlFor="name" className="block text-lg font-medium mb-2">
-                    Your Name
-                  </label>
+                  <label htmlFor="name" className="block text-lg font-medium mb-2">Your Name</label>
                   <input
                     type="text"
                     name="name"
@@ -47,9 +62,7 @@ export default function Contact() {
                   />
                 </div>
                 <div className="mb-4">
-                  <label htmlFor="email" className="block text-lg font-medium mb-2">
-                    Your Email
-                  </label>
+                  <label htmlFor="email" className="block text-lg font-medium mb-2">Your Email</label>
                   <input
                     type="email"
                     name="email"
@@ -61,9 +74,7 @@ export default function Contact() {
                   />
                 </div>
                 <div className="mb-4">
-                  <label htmlFor="message" className="block text-lg font-medium mb-2">
-                    Your Message
-                  </label>
+                  <label htmlFor="message" className="block text-lg font-medium mb-2">Your Message</label>
                   <textarea
                     name="message"
                     value={formData.message}
@@ -81,11 +92,12 @@ export default function Contact() {
                   Send Message
                 </button>
               </form>
+              {statusMessage && <p className="mt-4 text-center text-red-600">{statusMessage}</p>}
             </>
           ) : (
             <div className="text-center">
               <h2 className="text-2xl font-semibold mb-6">Thank You!</h2>
-              <p className="text-lg">Your message has been successfully sent. We will get back to you soon.</p>
+              <p className="text-lg">{statusMessage}</p>
             </div>
           )}
         </div>
@@ -93,21 +105,15 @@ export default function Contact() {
         {/* Contact Information */}
         <div className="bg-blue-600 text-white p-8 shadow-lg rounded-lg">
           <h2 className="text-2xl font-semibold mb-6">Contact Information</h2>
-          <p className="text-lg">
-            Feel free to reach out to us using the information below:
-          </p>
+          <p className="text-lg">Feel free to reach out to us using the information below:</p>
           <div className="mt-8">
             <p className="mb-4">
-              <span className="font-medium">Email:</span>{' '}
-              <a href="mailto:hellospiketech@gmail.com" className="underline">
-              hellospiketech@gmail.com
-              </a>
+              <span className="font-medium">Email:</span> 
+              <a href="mailto:hellospiketech@gmail.com" className="underline"> hellospiketech@gmail.com </a>
             </p>
             <p className="mb-4">
-              <span className="font-medium">Phone:</span>{' '}
-              <a href="tel:+1234567890" className="underline">
-                +254 700 878 430
-              </a>
+              <span className="font-medium">Phone:</span> 
+              <a href="tel:+254700878430" className="underline"> +254 700 878 430 </a>
             </p>
             <p className="mb-4">
               <span className="font-medium">Location:</span> Moi Avenue Nairobi
@@ -120,15 +126,9 @@ export default function Contact() {
           <div className="mt-6">
             <h3 className="text-lg font-semibold">Follow Us:</h3>
             <div className="flex space-x-4 mt-4">
-              <a href="https://facebook.com" className="hover:underline">
-                Facebook
-              </a>
-              <a href="https://twitter.com" className="hover:underline">
-                Twitter
-              </a>
-              <a href="https://linkedin.com" className="hover:underline">
-                LinkedIn
-              </a>
+              <a href="https://facebook.com" className="hover:underline"> Facebook </a>
+              <a href="https://twitter.com" className="hover:underline"> Twitter </a>
+              <a href="https://linkedin.com" className="hover:underline"> LinkedIn </a>
             </div>
           </div>
         </div>
