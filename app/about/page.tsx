@@ -117,7 +117,7 @@ export default function About() {
               width={128}
               height={128}
             />
-            <h4 className="text-xl font-bold mb-2">Alex Smith</h4>
+            <h4 className="text-xl font-bold mb-2">John Mnyika</h4>
             <p className="text-blue-600 font-semibold">Head of Development</p>
             <p className="text-sm text-gray-600 mt-4">
               An accomplished software engineer, Alex leads our development team
@@ -135,7 +135,7 @@ export default function About() {
               width={128}
               height={128}
             />
-            <h4 className="text-xl font-bold mb-2">Taylor Brown</h4>
+            <h4 className="text-xl font-bold mb-2">John Mnyika</h4>
             <p className="text-blue-600 font-semibold">
               Head of Technical Support
             </p>
