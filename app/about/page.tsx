@@ -112,7 +112,7 @@ export default function About() {
           <div className="bg-white p-6 shadow-lg rounded-lg text-center hover:shadow-2xl transition-shadow">
             <Image
               src="/profile.png"
-              alt="Alex Smith"
+              alt="John Mnyika"
               className="w-32 h-32 mx-auto rounded-full mb-4"
               width={128}
               height={128}
@@ -130,7 +130,7 @@ export default function About() {
           <div className="bg-white p-6 shadow-lg rounded-lg text-center hover:shadow-2xl transition-shadow">
             <Image
               src="/profile.png"
-              alt="Taylor Brown"
+              alt="John Mnyika"
               className="w-32 h-32 mx-auto rounded-full mb-4"
               width={128}
               height={128}
