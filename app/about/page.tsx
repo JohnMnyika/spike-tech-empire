@@ -55,7 +55,7 @@ export default function About() {
           {/* Team Member 1 */}
           <div className="bg-white p-6 shadow-lg rounded-lg text-center">
             <img src="/profile.png" alt="Jane Doe" className="w-32 h-32 mx-auto rounded-full mb-4" />
-            <h4 className="text-xl font-bold mb-2">Jane Doe</h4>
+            <h4 className="text-xl font-bold mb-2">John Mnyika</h4>
             <p className="text-blue-600 font-semibold">CEO & Founder</p>
             <p className="text-sm text-gray-600 mt-4">
               With over 15 years of experience in tech leadership, Jane is the visionary behind Spike Tech Empire, setting strategic direction and fostering innovation to drive company growth.
@@ -65,7 +65,7 @@ export default function About() {
           {/* Team Member 2 */}
           <div className="bg-white p-6 shadow-lg rounded-lg text-center">
             <img src="/profile.png" alt="Alex Smith" className="w-32 h-32 mx-auto rounded-full mb-4" />
-            <h4 className="text-xl font-bold mb-2">Alex Smith</h4>
+            <h4 className="text-xl font-bold mb-2">John Mnyika</h4>
             <p className="text-blue-600 font-semibold">Head of Development</p>
             <p className="text-sm text-gray-600 mt-4">
               An accomplished software engineer, Alex leads our development team with a focus on high-quality, client-centered solutions that leverage the latest technological advances.
@@ -75,7 +75,7 @@ export default function About() {
           {/* Team Member 3 */}
           <div className="bg-white p-6 shadow-lg rounded-lg text-center">
             <img src="/profile.png" alt="Taylor Brown" className="w-32 h-32 mx-auto rounded-full mb-4" />
-            <h4 className="text-xl font-bold mb-2">Taylor Brown</h4>
+            <h4 className="text-xl font-bold mb-2">John Mnyika</h4>
             <p className="text-blue-600 font-semibold">Head of Technical Support</p>
             <p className="text-sm text-gray-600 mt-4">
               Taylor ensures our clients receive unparalleled support and maintenance, managing systems with precision to keep them secure and fully operational.
