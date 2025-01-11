@@ -20,7 +20,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true); // Set submitting state to true
+    setIsSubmitting(true);
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -38,10 +38,10 @@ export default function Contact() {
       } else {
         setStatusMessage("Oops! Something went wrong. Please try again.");
       }
-    } catch (error) {
+    } catch {
       setStatusMessage("Error submitting form. Please try again later.");
     } finally {
-      setIsSubmitting(false); // Set submitting state back to false
+      setIsSubmitting(false);
     }
   };
 
@@ -49,7 +49,6 @@ export default function Contact() {
     <section className="container mx-auto py-20 px-6">
       <h1 className="text-4xl font-bold text-center mb-10">Contact Us</h1>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-        {/* Contact Form */}
         <div className="bg-white p-8 shadow-lg rounded-lg">
           {!submitted ? (
             <>
@@ -115,7 +114,15 @@ export default function Contact() {
                 </button>
               </form>
               {statusMessage && (
-                <p className="mt-4 text-center text-red-600">{statusMessage}</p>
+                <p
+                  className={`mt-4 text-center ${
+                    statusMessage.includes("success")
+                      ? "text-green-600"
+                      : "text-red-600"
+                  }`}
+                >
+                  {statusMessage}
+                </p>
               )}
             </>
           ) : (
@@ -126,7 +133,6 @@ export default function Contact() {
           )}
         </div>
 
-        {/* Contact Information */}
         <div className="bg-blue-600 text-white p-8 shadow-lg rounded-lg">
           <h2 className="text-2xl font-semibold mb-6">Contact Information</h2>
           <p className="text-lg">
@@ -136,15 +142,13 @@ export default function Contact() {
             <p className="mb-4">
               <span className="font-medium">Email:</span>
               <a href="mailto:hellospiketech@gmail.com" className="underline">
-                {" "}
-                hellospiketech@gmail.com{" "}
+                hellospiketech@gmail.com
               </a>
             </p>
             <p className="mb-4">
               <span className="font-medium">Phone:</span>
               <a href="tel:+254700878430" className="underline">
-                {" "}
-                +254 700 878 430{" "}
+                +254 700 878 430
               </a>
             </p>
             <p className="mb-4">
@@ -160,16 +164,13 @@ export default function Contact() {
             <h3 className="text-lg font-semibold">Follow Us:</h3>
             <div className="flex space-x-4 mt-4">
               <a href="https://facebook.com" className="hover:underline">
-                {" "}
-                Facebook{" "}
+                Facebook
               </a>
               <a href="https://twitter.com" className="hover:underline">
-                {" "}
-                Twitter{" "}
+                Twitter
               </a>
               <a href="https://linkedin.com" className="hover:underline">
-                {" "}
-                LinkedIn{" "}
+                LinkedIn
               </a>
             </div>
           </div>

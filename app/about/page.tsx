@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function About() {
   return (
     <div className="container mx-auto px-6 py-20">
@@ -90,10 +92,12 @@ export default function About() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Team Member 1 */}
           <div className="bg-white p-6 shadow-lg rounded-lg text-center hover:shadow-2xl transition-shadow">
-            <img
+            <Image
               src="/profile.png"
-              alt="Jane Doe"
+              alt="John Mnyika"
               className="w-32 h-32 mx-auto rounded-full mb-4"
+              width={128}
+              height={128}
             />
             <h4 className="text-xl font-bold mb-2">John Mnyika</h4>
             <p className="text-blue-600 font-semibold">CEO & Founder</p>
@@ -106,10 +110,12 @@ export default function About() {
 
           {/* Team Member 2 */}
           <div className="bg-white p-6 shadow-lg rounded-lg text-center hover:shadow-2xl transition-shadow">
-            <img
+            <Image
               src="/profile.png"
               alt="Alex Smith"
               className="w-32 h-32 mx-auto rounded-full mb-4"
+              width={128}
+              height={128}
             />
             <h4 className="text-xl font-bold mb-2">Alex Smith</h4>
             <p className="text-blue-600 font-semibold">Head of Development</p>
@@ -122,10 +128,12 @@ export default function About() {
 
           {/* Team Member 3 */}
           <div className="bg-white p-6 shadow-lg rounded-lg text-center hover:shadow-2xl transition-shadow">
-            <img
+            <Image
               src="/profile.png"
               alt="Taylor Brown"
               className="w-32 h-32 mx-auto rounded-full mb-4"
+              width={128}
+              height={128}
             />
             <h4 className="text-xl font-bold mb-2">Taylor Brown</h4>
             <p className="text-blue-600 font-semibold">
