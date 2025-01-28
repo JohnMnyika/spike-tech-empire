@@ -102,7 +102,7 @@ export default function About() {
             <h4 className="text-xl font-bold mb-2">John Mnyika</h4>
             <p className="text-blue-600 font-semibold">CEO & Founder</p>
             <p className="text-sm text-gray-600 mt-4">
-              With over 15 years of experience in tech leadership, John is the
+              With over 5 years of experience in tech leadership, John is the
               visionary behind Spike Tech Empire, setting strategic direction
               and fostering innovation to drive company growth.
             </p>
@@ -120,7 +120,7 @@ export default function About() {
             <h4 className="text-xl font-bold mb-2">John Mnyika</h4>
             <p className="text-blue-600 font-semibold">Head of Development</p>
             <p className="text-sm text-gray-600 mt-4">
-              An accomplished software engineer, Alex leads our development team
+              An accomplished software engineer, John leads our development team
               with a focus on high-quality, client-centered solutions that
               leverage the latest technological advances.
             </p>
@@ -140,7 +140,7 @@ export default function About() {
               Head of Technical Support
             </p>
             <p className="text-sm text-gray-600 mt-4">
-              Taylor ensures our clients receive unparalleled support and
+              John ensures our clients receive unparalleled support and
               maintenance, managing systems with precision to keep them secure
               and fully operational.
             </p>
