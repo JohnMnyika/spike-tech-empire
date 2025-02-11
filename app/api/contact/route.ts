@@ -1,6 +1,6 @@
 // app/api/contact/route.ts
 import { NextResponse } from "next/server";
-import emailjs from "emailjs-com"; // Use the Node.js SDK
+import emailjs from "@emailjs/nodejs"; // Correct import
 
 export async function POST(request: Request) {
   try {
@@ -20,10 +20,12 @@ export async function POST(request: Request) {
 
     // Send the form data using EmailJS
     const emailjsResponse = await emailjs.send(
-        "service_dtwmqbo", // Replace with your EmailJS service ID
-        "template_pw8fe8a", // Replace with your EmailJS template ID
+        "service_dtwmqbo", // Your EmailJS service ID
+        "template_z1dwlkh", // Your EmailJS template ID
         formData,
-        "obWSOrvkulvNI08W0" // Replace with your EmailJS user ID
+        {
+          publicKey: "obWSOrvkulvNI08W0", // Your EmailJS user ID (public key)
+        }
     );
 
     // Log the EmailJS response for debugging

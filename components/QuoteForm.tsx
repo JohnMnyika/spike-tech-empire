@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser"; // Use the browser SDK
 import { toast } from "react-toastify";
 
 export default function QuoteForm() {
@@ -12,16 +12,23 @@ export default function QuoteForm() {
         message: "",
     });
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setIsSubmitting(true);
 
         try {
-            await emailjs.send(
-                "service_dtwmqbo", // Replace with your EmailJS service ID
-                "template_pw8fe8a", // Replace with your EmailJS template ID
+            // Send the form data using EmailJS
+            const response = await emailjs.send(
+                "service_dtwmqbo", // Your EmailJS service ID
+                "template_z1dwlkh", // Your EmailJS template ID
                 formData,
-                "obWSOrvkulvNI08W0" // Replace with your EmailJS user ID
+                "obWSOrvkulvNI08W0" // Your EmailJS user ID (public key)
             );
+
+            // Log the EmailJS response for debugging
+            console.log("EmailJS Response:", response);
 
             // Show success toast
             toast.success("Your message has been sent successfully!", {
@@ -47,6 +54,8 @@ export default function QuoteForm() {
                 pauseOnHover: true,
                 draggable: true,
             });
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -92,9 +101,10 @@ export default function QuoteForm() {
             </div>
             <button
                 type="submit"
+                disabled={isSubmitting}
                 className="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
             >
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
             </button>
         </form>
     );
