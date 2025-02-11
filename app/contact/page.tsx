@@ -1,48 +1,20 @@
 "use client";
 
 import { useState } from "react";
+import QuoteForm from "../../components/QuoteForm"; // Correct import path
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "", // Added phone field
-    message: "",
-  });
   const [submitted, setSubmitted] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (
-      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setSubmitted(true);
-        setStatusMessage(
-            "Your message has been successfully sent. We will get back to you soon."
-        );
-      } else {
-        setStatusMessage("Oops! Something went wrong. Please try again.");
-      }
-    } catch {
-      setStatusMessage("Error submitting form. Please try again later.");
-    } finally {
-      setIsSubmitting(false);
+  const handleFormSubmit = (success: boolean) => {
+    if (success) {
+      setSubmitted(true);
+      setStatusMessage(
+          "Your message has been successfully sent. We will get back to you soon."
+      );
+    } else {
+      setStatusMessage("Oops! Something went wrong. Please try again.");
     }
   };
 
@@ -54,83 +26,7 @@ export default function Contact() {
             {!submitted ? (
                 <>
                   <h2 className="text-2xl font-semibold mb-6">Get in Touch</h2>
-                  <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                      <label
-                          htmlFor="name"
-                          className="block text-lg font-medium mb-2"
-                      >
-                        Your Name
-                      </label>
-                      <input
-                          type="text"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          className="w-full border border-gray-300 px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
-                          placeholder="Enter your name"
-                          required
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label
-                          htmlFor="email"
-                          className="block text-lg font-medium mb-2"
-                      >
-                        Your Email
-                      </label>
-                      <input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          className="w-full border border-gray-300 px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
-                          placeholder="Enter your email"
-                          required
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label
-                          htmlFor="phone"
-                          className="block text-lg font-medium mb-2"
-                      >
-                        Your Phone Number
-                      </label>
-                      <input
-                          type="tel"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          className="w-full border border-gray-300 px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
-                          placeholder="Enter your phone number"
-                          required
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label
-                          htmlFor="message"
-                          className="block text-lg font-medium mb-2"
-                      >
-                        Your Message
-                      </label>
-                      <textarea
-                          name="message"
-                          value={formData.message}
-                          onChange={handleChange}
-                          className="w-full border border-gray-300 px-4 py-2 rounded-md focus:ring-2 focus:ring-blue-500"
-                          placeholder="Write your message here..."
-                          rows={5}
-                          required
-                      ></textarea>
-                    </div>
-                    <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300"
-                    >
-                      {isSubmitting ? "Sending..." : "Send Message"}
-                    </button>
-                  </form>
+                  <QuoteForm onSubmitSuccess={handleFormSubmit} /> {/* Use the QuoteForm component */}
                   {statusMessage && (
                       <p
                           className={`mt-4 text-center ${
