@@ -25,7 +25,7 @@ export default function About() {
   };
 
   return (
-      <div className="container mx-auto px-6 py-20">
+      <div className="container mx-auto px-6 py-20" ref={ref}>
         {/* Heading */}
         <motion.h1
             className="text-5xl font-bold text-center mb-12 text-gray-900"

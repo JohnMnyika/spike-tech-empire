@@ -5,8 +5,16 @@ import { Code, Server, Network } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
+// Define the Service type
+type Service = {
+  title: string;
+  description: string;
+  icon: JSX.Element;
+  link: string;
+};
+
 // Service data
-const services = [
+const services: Service[] = [
   {
     title: "Software Development",
     description:
@@ -47,7 +55,7 @@ const itemVariants = {
 };
 
 // Reusable ServiceCard component
-const ServiceCard = ({ service }) => {
+const ServiceCard = ({ service }: { service: Service }) => {
   return (
       <motion.div
           className="bg-white/80 backdrop-blur-md p-6 rounded-lg border border-blue-100 text-center transition-all hover:border-blue-200 shadow-lg hover:shadow-2xl"
@@ -73,7 +81,7 @@ export default function Home() {
   const isInView = useInView(ref, { once: true });
 
   return (
-      <div>
+      <div ref={ref}>
         {/* Hero Section */}
         <motion.header
             className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-32"
@@ -130,7 +138,6 @@ export default function Home() {
         <motion.section
             id="services"
             className="py-20"
-            ref={ref}
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
