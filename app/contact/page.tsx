@@ -88,6 +88,22 @@ export default function Contact() {
                 </a>
               </div>
             </div>
+
+            {/* Google Map Embed */}
+            <div className="mt-8">
+              <h3 className="text-lg font-semibold mb-4">Our Location</h3>
+              <div className="overflow-hidden rounded-lg shadow-lg">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8173395297!2d36.820987074098!3d-1.283462035621215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d6678064cf%3A0x956bb6f5e0ab2aac!2sMoi%20Ave%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1739654239084!5m2!1sen!2ske"
+                    width="100%"
+                    height="300"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
           </div>
         </div>
       </section>
