@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Code, Server, Network } from "lucide-react";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react"; // Import useEffect
 
 // Define the Service type
 type Service = {
@@ -79,6 +79,21 @@ const ServiceCard = ({ service }: { service: Service }) => {
 export default function Home() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+
+  // Add Tawk.to script using useEffect
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.async = true;
+    script.src = "https://embed.tawk.to/67b4988e141895190e22088e/1ikcn7rvd";
+    script.charset = "UTF-8";
+    script.setAttribute("crossorigin", "*");
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
       <div ref={ref}>
