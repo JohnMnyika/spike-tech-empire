@@ -76,7 +76,7 @@ export default function WhyChooseUsSection() {
   };
 
   return (
-    <SectionWrapper id="why-us" center classroom>
+    <SectionWrapper id="why-us" center>
       <motion.div ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

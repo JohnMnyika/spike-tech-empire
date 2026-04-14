@@ -2,22 +2,29 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Menu, X, Zap } from "lucide-react";
 import Button from "./Button";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const tickingRef = useRef(false);
+
+  const handleScroll = useCallback(() => {
+    if (!tickingRef.current) {
+      window.requestAnimationFrame(() => {
+        setIsScrolled(window.scrollY > 10);
+        tickingRef.current = false;
+      });
+      tickingRef.current = true;
+    }
+  }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [handleScroll]);
 
   const closeMenu = () => {
     setIsMenuOpen(false);

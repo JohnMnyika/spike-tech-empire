@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Zap, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import Button from "./Button";
 
 export default function HeroSection() {

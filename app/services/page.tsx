@@ -9,7 +9,6 @@ import {
   Network,
   Users,
   ArrowRight,
-  CheckCircle2,
 } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
