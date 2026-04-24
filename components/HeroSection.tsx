@@ -2,7 +2,13 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  MessageSquareText,
+  ShieldCheck,
+  TimerReset,
+} from "lucide-react";
 import Button from "./Button";
 
 export default function HeroSection() {
@@ -11,8 +17,8 @@ export default function HeroSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
       },
     },
   };
@@ -27,119 +33,225 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-navy-900 via-navy-800 to-blue-900 text-white overflow-hidden pt-20">
-      {/* Animated Background Elements */}
+    <section className="relative overflow-hidden bg-slate-50 pb-20 pt-10 text-navy-950 sm:pb-24 lg:pb-28">
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute -top-40 -right-40 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl"
-          animate={{ x: [0, 100, 0], y: [0, 50, 0] }}
-          transition={{ duration: 15, repeat: Infinity }}
-        />
-        <motion.div
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl"
-          animate={{ x: [0, -100, 0], y: [0, -50, 0] }}
+          className="absolute -top-28 right-0 h-[420px] w-[420px] rounded-full bg-blue-500/12 blur-3xl"
+          animate={{ x: [0, 40, 0], y: [0, 24, 0] }}
           transition={{ duration: 18, repeat: Infinity }}
         />
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,Cjxzdmcgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxkZWZzPgogICAgPHBhdHRlcm4gaWQ9ImEiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCI+CiAgICAgIDxwYXRoIGQ9Ik0wIDAgTDYwIDAgTDYwIDYwIEwwIDYwIloiIGZpbGw9Im5vbmUiLz4KICAgICAgPHBhdGggZD0iTTAgMzAgTDYwIDMwIiBzdHJva2U9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4xKSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KICAgICAgPHBhdGggZD0iTTMwIDAgTDMwIDYwIiBzdHJva2U9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4xKSIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHBhdHRlcm4gaWQ9ImEiIGhyZWY9IiNhIi8+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNhKSIvPgo8L3N2Zz4=')] opacity-10" />
+        <motion.div
+          className="absolute -left-24 top-24 h-[320px] w-[320px] rounded-full bg-cyan-400/10 blur-3xl"
+          animate={{ x: [0, -30, 0], y: [0, -20, 0] }}
+          transition={{ duration: 20, repeat: Infinity }}
+        />
+        <div className="premium-grid absolute inset-0 opacity-40" />
       </div>
 
-      {/* Content */}
       <motion.div
-        className="relative container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[600px]"
+        className="relative container mx-auto grid min-h-[calc(100vh-5rem)] items-center gap-14 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(460px,0.95fr)] lg:px-8"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* Badge */}
-        <motion.div variants={itemVariants} className="mb-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30 backdrop-blur-sm">
-            <Sparkles className="w-4 h-4 text-cyan-400" />
-            <span className="text-sm font-medium text-cyan-300">
-              Transforming Ideas into Digital Excellence
-            </span>
-          </div>
-        </motion.div>
+        <div className="mx-auto max-w-2xl pt-20 text-center lg:mx-0 lg:max-w-none lg:pt-12 lg:text-left">
+          <motion.div variants={itemVariants} className="mb-6">
+            <div className="section-kicker">
+              Premium engineering partner for ambitious teams
+            </div>
+          </motion.div>
 
-        {/* Main Heading */}
-        <motion.h1
-          variants={itemVariants}
-          className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
-        >
-          Premium{" "}
-          <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Tech Solutions
-          </span>{" "}
-          for Modern Businesses
-        </motion.h1>
-
-        {/* Subheading */}
-        <motion.p
-          variants={itemVariants}
-          className="text-xl sm:text-2xl text-gray-300 mb-10 max-w-2xl"
-        >
-          Build faster, scale smarter, and dominate your market with our cutting-edge software development and tech consulting services.
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-4 mb-12"
-        >
-          <Link href="/contact">
-            <Button variant="primary" size="lg" className="group">
-              Start Your Project
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </Link>
-          <Link href="#services">
-            <Button variant="outline" size="lg">
-              Explore Services
-            </Button>
-          </Link>
-        </motion.div>
-
-        {/* Trust Indicators */}
-        <motion.div
-          variants={itemVariants}
-          className="grid grid-cols-3 gap-8 pt-12 border-t border-gray-700/50"
-        >
-          <div>
-            <div className="text-3xl font-bold text-cyan-400">50+</div>
-            <p className="text-gray-400 text-sm">Projects Delivered</p>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-cyan-400">99.9%</div>
-            <p className="text-gray-400 text-sm">Uptime Guarantee</p>
-          </div>
-          <div>
-            <div className="text-3xl font-bold text-cyan-400">24/7</div>
-            <p className="text-gray-400 text-sm">Expert Support</p>
-          </div>
-        </motion.div>
-      </motion.div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <div className="flex flex-col items-center">
-          <span className="text-xs text-gray-400 mb-2">Scroll to explore</span>
-          <svg
-            className="w-6 h-6 text-cyan-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+          <motion.h1
+            variants={itemVariants}
+            className="mb-6 max-w-4xl text-5xl font-semibold leading-[0.96] tracking-[-0.08em] text-navy-950 sm:text-6xl lg:text-7xl"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
-          </svg>
+            Ship revenue-ready software without building an in-house team from
+            scratch.
+          </motion.h1>
+
+          <motion.p
+            variants={itemVariants}
+            className="mb-8 max-w-2xl text-lg text-slate-600 sm:text-xl"
+          >
+            We design, build, and harden digital products for founders and
+            operators who need technical excellence, clean execution, and a team
+            they can trust quickly.
+          </motion.p>
+
+          <motion.div
+            variants={itemVariants}
+            className="mb-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:justify-start"
+          >
+            <Link href="/contact">
+              <Button variant="primary" size="lg" className="group w-full sm:w-auto">
+                Get a Quote
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+            <Link href="#portfolio">
+              <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                View Case Studies
+              </Button>
+            </Link>
+          </motion.div>
+
+          <motion.div
+            variants={itemVariants}
+            className="mb-10 grid gap-3 sm:grid-cols-3"
+          >
+            {[
+              "Clear scopes and delivery milestones",
+              "Senior-level product and engineering thinking",
+              "Fast communication across build, infra, and support",
+            ].map((item) => (
+              <div
+                key={item}
+                className="flex items-start gap-3 rounded-2xl border border-white/70 bg-white/80 px-4 py-4 text-left shadow-[0_12px_32px_rgba(15,23,42,0.06)] backdrop-blur"
+              >
+                <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-cyan-500" />
+                <span className="text-sm font-medium text-slate-700">{item}</span>
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            variants={itemVariants}
+            className="grid gap-5 border-t border-slate-200/80 pt-8 text-left sm:grid-cols-3"
+          >
+            <div>
+              <div className="text-3xl font-semibold tracking-[-0.06em] text-navy-950">
+                50+
+              </div>
+              <p className="mt-1 text-sm text-slate-500">Projects launched across web, cloud, and internal tools.</p>
+            </div>
+            <div>
+              <div className="text-3xl font-semibold tracking-[-0.06em] text-navy-950">
+                24/7
+              </div>
+              <p className="mt-1 text-sm text-slate-500">Support coverage for production systems and urgent fixes.</p>
+            </div>
+            <div>
+              <div className="text-3xl font-semibold tracking-[-0.06em] text-navy-950">
+                99.9%
+              </div>
+              <p className="mt-1 text-sm text-slate-500">Target reliability for stable, client-facing infrastructure.</p>
+            </div>
+          </motion.div>
         </div>
+
+        <motion.div
+          variants={itemVariants}
+          className="relative mx-auto w-full max-w-[560px] lg:mx-0"
+        >
+          <div className="absolute inset-x-10 top-10 h-40 rounded-full bg-blue-500/20 blur-3xl" />
+          <div className="relative overflow-hidden rounded-[32px] border border-white/80 bg-white/88 p-4 shadow-[0_30px_100px_rgba(15,23,42,0.18)] backdrop-blur-xl">
+            <div className="rounded-[28px] border border-slate-200 bg-slate-950 p-5 text-white">
+              <div className="mb-5 flex items-center justify-between">
+                <div>
+                  <div className="text-xs uppercase tracking-[0.24em] text-slate-400">
+                    Delivery command center
+                  </div>
+                  <div className="mt-2 text-lg font-semibold tracking-[-0.04em]">
+                    Product rollout overview
+                  </div>
+                </div>
+                <div className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-300">
+                  On track
+                </div>
+              </div>
+
+              <div className="grid gap-4">
+                <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
+                  <div className="mb-3 flex items-center justify-between">
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.18em] text-slate-400">
+                        Active sprint
+                      </p>
+                      <p className="mt-1 text-base font-medium text-white">
+                        Client portal and automation layer
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-xs text-slate-400">Progress</p>
+                      <p className="text-sm font-semibold text-cyan-300">82%</p>
+                    </div>
+                  </div>
+                  <div className="h-2 rounded-full bg-white/10">
+                    <div className="h-2 w-[82%] rounded-full bg-gradient-to-r from-cyan-400 to-blue-500" />
+                  </div>
+                </div>
+
+                <div className="grid gap-4 md:grid-cols-[1.15fr_0.85fr]">
+                  <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
+                    <div className="mb-4 flex items-center justify-between">
+                      <p className="text-sm font-medium text-white">
+                        Delivery pillars
+                      </p>
+                      <p className="text-xs text-slate-400">This week</p>
+                    </div>
+                    <div className="space-y-3">
+                      {[
+                        {
+                          icon: ShieldCheck,
+                          title: "Infrastructure hardening",
+                          note: "SLA, monitoring, backups",
+                        },
+                        {
+                          icon: TimerReset,
+                          title: "Launch readiness",
+                          note: "QA, docs, release coordination",
+                        },
+                        {
+                          icon: MessageSquareText,
+                          title: "Stakeholder visibility",
+                          note: "Weekly reporting and faster decisions",
+                        },
+                      ].map(({ icon: Icon, title, note }) => (
+                        <div
+                          key={title}
+                          className="flex items-start gap-3 rounded-2xl border border-white/10 bg-slate-900/70 p-3"
+                        >
+                          <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-2 text-cyan-300">
+                            <Icon className="h-4 w-4" />
+                          </div>
+                          <div>
+                            <p className="text-sm font-medium text-white">{title}</p>
+                            <p className="text-xs text-slate-400">{note}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
+                      <p className="text-xs uppercase tracking-[0.2em] text-slate-400">
+                        Client satisfaction
+                      </p>
+                      <p className="mt-4 text-4xl font-semibold tracking-[-0.06em] text-white">
+                        4.9
+                      </p>
+                      <p className="mt-2 text-sm text-slate-400">
+                        Average project sentiment from delivery feedback.
+                      </p>
+                    </div>
+                    <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-blue-600 to-cyan-500 p-4 text-white">
+                      <p className="text-xs uppercase tracking-[0.2em] text-white/70">
+                        Avg. response time
+                      </p>
+                      <p className="mt-4 text-4xl font-semibold tracking-[-0.06em]">
+                        2h
+                      </p>
+                      <p className="mt-2 text-sm text-white/80">
+                        Fast answers for active clients and critical production issues.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );

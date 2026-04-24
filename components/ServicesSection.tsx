@@ -3,61 +3,75 @@
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Code, Server, Network, Cloud, Zap, Shield } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Cloud,
+  Code,
+  Network,
+  Server,
+  Shield,
+  Zap,
+} from "lucide-react";
 import SectionWrapper from "./SectionWrapper";
-import Card from "./Card";
 import Button from "./Button";
 
 interface Service {
   icon: React.ReactNode;
   title: string;
+  outcome: string;
   description: string;
   benefits: string[];
-  color: string;
 }
 
 const services: Service[] = [
   {
     icon: <Code className="w-8 h-8" />,
     title: "Software Development",
-    description: "Custom applications built to scale with your business needs",
-    benefits: ["Web Apps", "Mobile Apps", "API Development", "Legacy Modernization"],
-    color: "from-cyan-500 to-blue-500",
+    outcome: "Launch polished products faster.",
+    description:
+      "Design and build web apps, internal platforms, and APIs that feel stable from day one and can scale as demand grows.",
+    benefits: ["Product strategy support", "Modern web and mobile delivery", "API architecture", "Legacy modernization"],
   },
   {
     icon: <Server className="w-8 h-8" />,
     title: "Technical Support & Maintenance",
-    description: "24/7 proactive monitoring and management of your systems",
-    benefits: ["Monitoring", "Troubleshooting", "Updates", "Security Patches"],
-    color: "from-purple-500 to-pink-500",
+    outcome: "Reduce downtime and firefighting.",
+    description:
+      "Keep critical systems healthy with proactive monitoring, fast issue response, and clear operational ownership.",
+    benefits: ["Monitoring and alerting", "Troubleshooting", "Version updates", "Security patching"],
   },
   {
     icon: <Network className="w-8 h-8" />,
     title: "Networking Solutions",
-    description: "Secure, scalable infrastructure for your growing business",
-    benefits: ["Network Setup", "Cloud Infrastructure", "Security", "Optimization"],
-    color: "from-emerald-500 to-cyan-500",
+    outcome: "Build reliable infrastructure foundations.",
+    description:
+      "Create secure networks and resilient environments that support distributed teams, fast growth, and tighter controls.",
+    benefits: ["Network setup", "Secure architecture", "Performance tuning", "Infrastructure optimization"],
   },
   {
     icon: <Cloud className="w-8 h-8" />,
     title: "Cloud Services",
-    description: "Migrate and manage your infrastructure in the cloud",
-    benefits: ["AWS/GCP/Azure", "Database Management", "Backup Solutions", "Disaster Recovery"],
-    color: "from-blue-500 to-indigo-500",
+    outcome: "Scale without operational drag.",
+    description:
+      "Migrate, optimize, and manage cloud environments with sensible cost control, backups, and deployment discipline.",
+    benefits: ["AWS, GCP, and Azure support", "Database operations", "Backups", "Disaster recovery"],
   },
   {
     icon: <Zap className="w-8 h-8" />,
     title: "Performance Optimization",
-    description: "Speed up your applications and improve user experience",
-    benefits: ["Code Optimization", "Database Tuning", "CDN Setup", "Load Testing"],
-    color: "from-yellow-500 to-orange-500",
+    outcome: "Turn slow software into a growth asset.",
+    description:
+      "Improve speed, stability, and user confidence through targeted fixes across application, database, and delivery layers.",
+    benefits: ["Code optimization", "Database tuning", "CDN strategy", "Load testing"],
   },
   {
     icon: <Shield className="w-8 h-8" />,
     title: "Security Consulting",
-    description: "Protect your data with enterprise-grade security solutions",
-    benefits: ["Security Audit", "Penetration Testing", "Compliance", "Training"],
-    color: "from-red-500 to-pink-500",
+    outcome: "Protect trust before problems surface.",
+    description:
+      "Review systems, identify risks, and strengthen controls so your product can meet enterprise expectations with confidence.",
+    benefits: ["Security audits", "Penetration testing", "Compliance guidance", "Team training"],
   },
 ];
 
@@ -85,57 +99,72 @@ export default function ServicesSection() {
   };
 
   return (
-    <SectionWrapper id="services" center>
+    <SectionWrapper id="services" className="bg-slate-50/60" center>
       <motion.div ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           className="mb-16"
         >
-          <h2 className="mb-4">Our Services</h2>
-          <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
-            Comprehensive tech solutions designed to accelerate your growth and transform your business
+          <div className="section-kicker mb-4">Services</div>
+          <h2 className="mb-4">Execution across product, platform, and reliability.</h2>
+          <p className="mx-auto max-w-3xl text-lg text-slate-600">
+            The offer is simple: fewer vendors, sharper delivery, and one team that can take responsibility for both product velocity and technical quality.
           </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
           {services.map((service, index) => (
             <motion.div key={index} variants={itemVariants}>
-              <Card variant="gradient">
-                <div
-                  className={`bg-gradient-to-br ${service.color} p-3 rounded-lg w-fit mb-4 text-white`}
+              <motion.div
+                className="group flex h-full flex-col rounded-[28px] border border-slate-200/80 bg-white p-7 text-left shadow-[0_16px_48px_rgba(15,23,42,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:border-sky-200 hover:shadow-[0_24px_72px_rgba(15,23,42,0.12)]"
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.2 }}
+              >
+                <motion.div
+                  className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-sky-100 bg-sky-50 text-sky-600"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
                 >
                   {service.icon}
-                </div>
+                </motion.div>
 
-                <h3 className="text-xl font-bold mb-2 text-navy-900 dark:text-white">
+                <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-sky-600">
+                  {service.outcome}
+                </p>
+                <h3 className="mb-3 text-2xl font-semibold text-navy-950 transition-colors group-hover:text-blue-700">
                   {service.title}
                 </h3>
-
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className="mb-6 text-sm leading-7 text-slate-600">
                   {service.description}
                 </p>
 
-                <ul className="space-y-2 mb-6">
+                <ul className="mb-7 space-y-3">
                   {service.benefits.map((benefit, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                      <span className="w-1.5 h-1.5 bg-cyan-500 rounded-full mr-2" />
+                    <li key={idx} className="flex items-center text-sm font-medium text-slate-700">
+                      <CheckCircle2 className="mr-3 h-4 w-4 flex-shrink-0 text-cyan-500" />
                       {benefit}
                     </li>
                   ))}
                 </ul>
 
-                <Link href="/services">
-                  <Button variant="outline" size="sm" className="w-full">
-                    Learn More →
-                  </Button>
+                <Link href="/services" className="mt-auto block">
+                  <motion.div
+                    className="w-full"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <Button variant="outline" size="sm" className="w-full justify-between text-sm">
+                      Explore service
+                      <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  </motion.div>
                 </Link>
-              </Card>
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>

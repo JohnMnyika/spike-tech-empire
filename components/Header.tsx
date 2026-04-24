@@ -3,8 +3,9 @@
 
 import Link from "next/link";
 import { useState, useEffect, useCallback, useRef } from "react";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import Button from "./Button";
+import { motion } from "framer-motion";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,9 +32,8 @@ export default function Header() {
   };
 
   const navLinks = [
-    { href: "/", label: "Home" },
     { href: "/#services", label: "Services" },
-    { href: "/#portfolio", label: "Portfolio" },
+    { href: "/#portfolio", label: "Case Studies" },
     { href: "/about", label: "About" },
   ];
 
@@ -41,80 +41,105 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/80 dark:bg-navy-900/80 backdrop-blur-md shadow-lg"
+          ? "bg-white/82 dark:bg-navy-950/92 backdrop-blur-2xl border-b border-slate-200/70 dark:border-navy-800 shadow-[0_12px_40px_rgba(15,23,42,0.06)]"
           : "bg-transparent"
       }`}
     >
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 md:h-20">
-        {/* Logo and Brand */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white font-bold hover:shadow-lg hover:shadow-cyan-500/50 transition-all">
-            <Zap className="w-6 h-6" />
-          </div>
-          <div>
-            <div className="text-sm font-bold text-navy-900 dark:text-white">
+      <nav className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="group flex items-center gap-3">
+          <motion.div
+            className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/80 bg-white/90 shadow-[0_10px_30px_rgba(15,23,42,0.10)] transition-all"
+            whileHover={{ scale: 1.03, y: -1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <span className="bg-gradient-to-br from-blue-600 to-cyan-400 bg-clip-text text-sm font-bold text-transparent">
+              ST
+            </span>
+          </motion.div>
+          <div className="leading-none">
+            <div className="text-sm font-semibold tracking-[-0.04em] text-navy-950 dark:text-white">
               Spike Tech
             </div>
-            <div className="text-xs text-gray-600 dark:text-gray-400">
-              Empire
+            <div className="mt-1 text-[11px] font-medium uppercase tracking-[0.24em] text-slate-500">
+              Product Engineering
             </div>
           </div>
         </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden items-center gap-1 rounded-full border border-slate-200/80 bg-white/80 p-1 shadow-sm md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-navy-900 dark:text-gray-100 font-medium hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
+              className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-950"
             >
               {link.label}
             </Link>
           ))}
+        </div>
+
+        <div className="hidden items-center gap-3 md:flex">
+          <Link
+            href="/contact"
+            className="rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-white/80 hover:text-slate-950"
+          >
+            Contact
+          </Link>
           <Link href="/contact">
-            <Button variant="primary" size="sm">
-              Get Started
+            <Button variant="primary" size="sm" className="group">
+              Get a Quote
+              <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
             </Button>
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-navy-800 transition-colors"
+          className="rounded-xl border border-slate-200 bg-white/90 p-2 text-slate-700 shadow-sm transition-colors hover:bg-slate-50 md:hidden"
           aria-label="Toggle menu"
         >
           {isMenuOpen ? (
-            <X className="w-6 h-6" />
+            <X className="h-6 w-6" />
           ) : (
-            <Menu className="w-6 h-6" />
+            <Menu className="h-6 w-6" />
           )}
         </button>
       </nav>
 
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-navy-900 border-t border-gray-200 dark:border-navy-800">
-          <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
+      <motion.div
+        initial={false}
+        animate={isMenuOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
+        transition={{ duration: 0.2 }}
+        className="md:hidden overflow-hidden"
+      >
+        <div className="border-t border-slate-200 bg-white/95 backdrop-blur-xl">
+          <div className="container mx-auto flex flex-col gap-3 px-4 py-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-navy-900 dark:text-gray-100 font-medium hover:text-cyan-600 dark:hover:text-cyan-400 py-2 transition-colors"
+                className="rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100"
                 onClick={closeMenu}
               >
                 {link.label}
               </Link>
             ))}
-            <Link href="/contact" onClick={closeMenu}>
-              <Button variant="primary" size="sm" className="w-full">
-                Get Started
+            <Link
+              href="/contact"
+              className="rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100"
+              onClick={closeMenu}
+            >
+              Contact
+            </Link>
+            <Link href="/contact" onClick={closeMenu} className="mt-2">
+              <Button variant="primary" size="sm" className="w-full group">
+                Get a Quote
+                <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-0.5 transition-transform" />
               </Button>
             </Link>
           </div>
         </div>
-      )}
+      </motion.div>
     </header>
   );
 }

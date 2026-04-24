@@ -1,9 +1,22 @@
 // app/layout.tsx
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import "../app/globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Analytics } from "@vercel/analytics/react";
+
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "100 900",
+});
+
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
+});
 
 export const metadata: Metadata = {
   title: "Spike Tech Empire | Premium Tech Solutions",
@@ -53,11 +66,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html
+      lang="en"
+      className={`scroll-smooth ${geistSans.variable} ${geistMono.variable}`}
+    >
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#0f172a" />
+        <meta name="theme-color" content="#0b1220" />
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className="flex flex-col min-h-screen bg-white dark:bg-navy-950 text-gray-900 dark:text-gray-50">

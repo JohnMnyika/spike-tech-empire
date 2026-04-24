@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import SectionWrapper from "./SectionWrapper";
 import Card from "./Card";
 
@@ -79,51 +80,85 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <SectionWrapper center className="bg-gray-50 dark:bg-navy-900/50">
+    <SectionWrapper center className="bg-[linear-gradient(180deg,rgba(248,250,252,0.2)_0%,#ffffff_100%)]">
       <motion.div ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           className="mb-16"
         >
-          <h2 className="mb-4">Trusted by Industry Leaders</h2>
-          <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
-            Hear from clients who've transformed their business with our solutions
+          <div className="section-kicker mb-4">Client Trust</div>
+          <h2 className="mb-4">The brand should feel more personal, not just more polished.</h2>
+          <p className="mx-auto max-w-3xl text-lg text-slate-600">
+            Premium service businesses convert better when the visitor sees both strong execution and a real person standing behind the company.
           </p>
         </motion.div>
 
-        {/* Testimonials Carousel */}
-        <motion.div variants={itemVariants} className="max-w-4xl mx-auto">
-          <div className="relative">
-            {/* Testimonial Card */}
-            <Card variant="default" className="p-8 md:p-10">
-              <div className="mb-6">
-                {/* Rating */}
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 fill-yellow-400 text-yellow-400"
-                    />
-                  ))}
+        <motion.div variants={itemVariants} className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="relative overflow-hidden rounded-[32px] border border-slate-200/80 bg-white p-7 text-left shadow-[0_24px_72px_rgba(15,23,42,0.10)]">
+            <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-r from-blue-50 via-cyan-50 to-slate-50" />
+            <div className="relative">
+              <div className="mb-6 flex items-center gap-4">
+                <div className="relative h-20 w-20 overflow-hidden rounded-3xl border border-white shadow-[0_12px_30px_rgba(15,23,42,0.12)]">
+                  <Image
+                    src="/pro.png"
+                    alt="CEO and Founder of Spike Tech Empire"
+                    fill
+                    className="object-cover"
+                    sizes="80px"
+                    priority={false}
+                  />
+                </div>
+                <div>
+                  <p className="text-lg font-semibold tracking-[-0.04em] text-navy-950">
+                    CEO & Founder
+                  </p>
+                  <p className="text-sm text-slate-500">
+                    Leading delivery, product thinking, and client trust at Spike Tech Empire.
+                  </p>
                 </div>
               </div>
 
-              {/* Content */}
-              <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 italic">
+              <div className="rounded-[28px] border border-slate-200 bg-slate-50 p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                  Founder-led execution
+                </p>
+                <p className="mt-3 text-sm leading-7 text-slate-600">
+                  This is a strong visual credibility upgrade because it puts a face to the business. For service companies, that often improves trust faster than another abstract metric block.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative">
+            <Card variant="default" className="rounded-[32px] border border-slate-200/80 bg-white p-8 shadow-[0_24px_72px_rgba(15,23,42,0.10)] md:p-10">
+              <div className="mb-6 flex items-center justify-between">
+                <div className="flex gap-1">
+                  {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="h-5 w-5 fill-amber-400 text-amber-400"
+                    />
+                  ))}
+                </div>
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-2 text-slate-400">
+                  <Quote className="h-5 w-5" />
+                </div>
+              </div>
+
+              <p className="mb-8 text-xl leading-9 tracking-[-0.02em] text-slate-700">
                 "{testimonials[currentIndex].content}"
               </p>
 
-              {/* Author */}
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white font-semibold">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 text-sm font-semibold text-white">
                   {testimonials[currentIndex].avatar}
                 </div>
                 <div>
-                  <p className="font-semibold text-navy-900 dark:text-white">
+                  <p className="font-semibold text-navy-950">
                     {testimonials[currentIndex].name}
                   </p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <p className="text-sm text-slate-500">
                     {testimonials[currentIndex].role} at{" "}
                     {testimonials[currentIndex].company}
                   </p>
@@ -131,17 +166,15 @@ export default function TestimonialsSection() {
               </div>
             </Card>
 
-            {/* Navigation Buttons */}
-            <div className="flex items-center justify-center gap-4 mt-8">
+            <div className="mt-8 flex items-center justify-center gap-4">
               <button
                 onClick={prev}
-                className="p-2 rounded-full border-2 border-gray-300 dark:border-navy-700 hover:bg-gray-100 dark:hover:bg-navy-800 transition-colors"
+                className="rounded-full border border-slate-300 bg-white p-2 transition-colors hover:bg-slate-50"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
 
-              {/* Indicators */}
               <div className="flex gap-2">
                 {testimonials.map((_, index) => (
                   <button
@@ -150,7 +183,7 @@ export default function TestimonialsSection() {
                     className={`w-2 h-2 rounded-full transition-all ${
                       index === currentIndex
                         ? "bg-cyan-500 w-8"
-                        : "bg-gray-300 dark:bg-navy-700"
+                        : "bg-slate-300"
                     }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
@@ -159,7 +192,7 @@ export default function TestimonialsSection() {
 
               <button
                 onClick={next}
-                className="p-2 rounded-full border-2 border-gray-300 dark:border-navy-700 hover:bg-gray-100 dark:hover:bg-navy-800 transition-colors"
+                className="rounded-full border border-slate-300 bg-white p-2 transition-colors hover:bg-slate-50"
                 aria-label="Next testimonial"
               >
                 <ChevronRight className="w-5 h-5" />
