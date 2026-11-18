@@ -2,8 +2,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../app/globals.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { Analytics } from "@vercel/analytics/react";
 
 const geistSans = localFont({
@@ -19,9 +17,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Spike Tech Empire | Premium Tech Solutions",
+  title: "Spike Tech Empire | Product Engineering, Built to Ship",
   description:
-    "Build faster, scale smarter. Premium software development, cloud solutions, and tech consulting for modern businesses. Based in Kenya, trusted globally.",
+    "Senior product engineering for founders moving fast. We design, build, and scale the software your business needs to get ahead.",
   keywords: [
     "software development",
     "web development",
@@ -73,21 +71,12 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#0b1220" />
+        <meta name="theme-color" content="#080b10" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className="flex flex-col min-h-screen bg-white dark:bg-navy-950 text-gray-900 dark:text-gray-50">
-        {/* Header */}
-        <Header />
-
-        {/* Main Content */}
-        <main className="flex-grow pt-16 md:pt-20">{children}</main>
-
-        {/* Analytics */}
+      <body>
+        {children}
         <Analytics />
-
-        {/* Footer */}
-        <Footer />
       </body>
     </html>
   );
