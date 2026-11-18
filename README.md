@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Spike Tech Empire
 
-## Getting Started
+The website for Spike Tech Empire, a Nairobi-based product engineering and technology partner. The site introduces the team’s services, showcases selected work, shares the founder’s approach, and makes it easy to start a conversation or book a call.
 
-First, run the development server:
+**Built with:** Next.js 14 · React 18 · TypeScript · Tailwind CSS
+
+## What’s on the site
+
+- Responsive homepage with service, project showcase, working approach, founder, and contact sections
+- Dedicated About, Services, and Contact pages
+- Calendly booking link for product architecture calls
+- Email and WhatsApp contact links
+- Locally hosted Geist fonts and founder portrait
+- Vercel Web Analytics
+
+## Getting started
+
+### Requirements
+
+- Node.js 18.17 or newer
+- npm
+
+### Install and run
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site. The development server supports hot reloading as you edit files.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available commands
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the local development server |
+| `npm run build` | Create an optimized production build |
+| `npm run start` | Serve the production build locally |
+| `npm run lint` | Run the Next.js ESLint command |
 
-## Learn More
+To check a production build locally:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```text
+app/
+  about/page.tsx       About page
+  contact/page.tsx     Contact page
+  services/page.tsx    Services page
+  globals.css          Global styles and responsive design
+  layout.tsx           Root layout, metadata, fonts, and analytics
+  page.tsx              Homepage
+components/             Shared UI components
+public/                 Static assets, including logos and portraits
+```
 
-## Deploy on Vercel
+The main homepage content and its Calendly booking URL are in `app/page.tsx`. Global visual styles are in `app/globals.css`; page metadata and locally hosted fonts are configured in `app/layout.tsx`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The project can be deployed to any platform that supports Next.js. To deploy with Vercel:
+
+1. Import the repository into [Vercel](https://vercel.com/new).
+2. Keep the standard Next.js build settings (`npm run build`).
+3. Deploy. Vercel will build and publish the site.
+
+For other hosting providers, follow the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying).
