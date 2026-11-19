@@ -17,7 +17,7 @@ The website for Spike Tech Empire, a Nairobi-based product engineering and techn
 
 ### Requirements
 
-- Node.js 18.17 or newer
+- Node.js 26.x
 - npm
 
 ### Install and run
