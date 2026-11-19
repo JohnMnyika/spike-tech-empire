@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Activity, ArrowDownRight, ArrowRight, ArrowUpRight, CalendarDays, Check, ChevronDown, Clock3, Cloud, Code2, Gauge, HeartPulse, Layers3, Menu, Network, ShieldCheck, Smartphone, Sparkles, Video, X, Zap } from "lucide-react";
 
 const services = [
@@ -28,12 +28,74 @@ function Brand() {
 export default function Home() {
   const [filter, setFilter] = useState("All work");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const filters = ["All work", "Web apps", "Mobile", "Fintech & data"];
   const shown = projects.filter((project) => filter === "All work" || project.category === filter);
 
+  useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion || !("IntersectionObserver" in window)) return;
+
+    const revealTargets = document.querySelectorAll<HTMLElement>(
+      ".metrics-inner, .services-section .section-heading, .service-card, .work-heading, .filter-row, .project-card, .trust-copy, .testimonial-panel, .contact-card",
+    );
+    revealTargets.forEach((target) => target.classList.add("scroll-reveal"));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -36px 0px" },
+    );
+
+    revealTargets.forEach((target) => observer.observe(target));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = ["services", "work", "trust", "founder", "contact"];
+    const sections = sectionIds.map((id) => document.getElementById(id)).filter((section): section is HTMLElement => Boolean(section));
+    const observer = "IntersectionObserver" in window
+      ? new IntersectionObserver(
+          (entries) => {
+            const current = entries
+              .filter((entry) => entry.isIntersecting)
+              .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+            if (current) setActiveSection(current.target.id);
+          },
+          { rootMargin: "-18% 0px -68% 0px", threshold: [0, 0.25, 0.5] },
+        )
+      : null;
+    sections.forEach((section) => observer?.observe(section));
+
+    let frame = 0;
+    const updateProgress = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+        document.documentElement.style.setProperty("--page-progress", `${Math.min(progress, 1) * 100}%`);
+      });
+    };
+    updateProgress();
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+
+    return () => {
+      observer?.disconnect();
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateProgress);
+      window.removeEventListener("resize", updateProgress);
+    };
+  }, []);
+
   return (
     <main id="top" className="site-shell">
-      <header className="nav-wrap"><nav className="top-nav"><Brand /><button className="menu-toggle" aria-label="Toggle navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button><div className={`nav-links ${menuOpen ? "nav-open" : ""}`}><a href="#services" onClick={() => setMenuOpen(false)}>Services</a><a href="#work" onClick={() => setMenuOpen(false)}>Case studies</a><a href="#trust" onClick={() => setMenuOpen(false)}>Why Spike</a><a href="#founder" onClick={() => setMenuOpen(false)}>Founder</a><a className="nav-cta" href="#contact">Let&apos;s talk <ArrowUpRight size={15} /></a></div></nav></header>
+      <header className="nav-wrap"><div className="reading-progress" aria-hidden="true" /><nav className="top-nav"><Brand /><button className="menu-toggle" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button><div className={`nav-links ${menuOpen ? "nav-open" : ""}`}><a className={activeSection === "services" ? "active" : ""} aria-current={activeSection === "services" ? "location" : undefined} href="#services" onClick={() => setMenuOpen(false)}>Services</a><a className={activeSection === "work" ? "active" : ""} aria-current={activeSection === "work" ? "location" : undefined} href="#work" onClick={() => setMenuOpen(false)}>Case studies</a><a className={activeSection === "trust" ? "active" : ""} aria-current={activeSection === "trust" ? "location" : undefined} href="#trust" onClick={() => setMenuOpen(false)}>Why Spike</a><a className={activeSection === "founder" ? "active" : ""} aria-current={activeSection === "founder" ? "location" : undefined} href="#founder" onClick={() => setMenuOpen(false)}>Founder</a><a className="nav-cta" href="#contact" onClick={() => setMenuOpen(false)}>Let&apos;s talk <ArrowUpRight size={15} /></a></div></nav></header>
 
       <section className="hero section-wrap"><div className="hero-copy"><div className="eyebrow"><span className="live-dot" /> SENIOR ENGINEERING PARTNER <span className="eyebrow-sep">/</span> NOW BOOKING Q2 SPRINTS</div><h1>Make your next big idea <span className="gradient-ink">production-ready.</span></h1><p className="hero-lede">Senior product engineering for founders moving fast. We design, build, and scale the software your business needs to get ahead.</p><div className="hero-actions"><a className="button button-primary" href={CALENDLY_URL} target="_blank" rel="noreferrer">Book an architecture call <ArrowRight size={16} /></a><a className="button button-quiet" href="#work">Explore our work <ArrowDownRight size={16} /></a></div><div className="hero-proof"><div className="proof-avatars"><span>JM</span><span>AK</span><span>+8</span></div><div><strong>Senior engineers. Direct access.</strong><small>Built in Nairobi. Trusted everywhere.</small></div><div className="proof-divider" /><div className="proof-stars"><span>★★★★★</span><small>CLIENT-LED, FOUNDER-OWNED</small></div></div></div>
 
